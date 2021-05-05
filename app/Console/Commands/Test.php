@@ -86,8 +86,8 @@ class Test extends Command
                 if ($row[16]) {
                     $upc = $row[16];
                 }
-                if ($row[6]) {
-                    $album_name = $row[6];
+                if ($row[5]) {
+                    $album_name = $row[5];
                 }
                 $artirst_string = $row[8];
                 $artist_array = preg_split("/,|&/m", $artirst_string);
@@ -137,7 +137,7 @@ class Test extends Command
             if (!$isrc) {
                 continue;
             }
-            $number = $row[5];
+            $number = $row[4];
             $title = $row[7];
             $title = trim(preg_replace('/\[[^\]]*\]/m', '', $title));
 
