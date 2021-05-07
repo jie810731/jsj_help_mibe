@@ -73,23 +73,23 @@ class Test extends Command
         $insert_data = [];
 
         $filtered = $total_excel_data->filter(function ($value, $key) {
-            return $value[15];
+            return $value[6];
         });
 
-        $grouped_by_album_name = $filtered->whereNotNull(15)->groupBy(6);
+        $grouped_by_album_name = $filtered->whereNotNull(6)->groupBy(2);
 
         foreach ($grouped_by_album_name as $group) {
             $upc = '';
             $album_name = '';
             $total_artist_array = [];
             foreach ($group as $row) {
-                if ($row[16]) {
-                    $upc = $row[16];
+                if ($row[7]) {
+                    $upc = $row[7];
                 }
-                if ($row[5]) {
-                    $album_name = $row[5];
+                if ($row[2]) {
+                    $album_name = $row[2];
                 }
-                $artirst_string = $row[8];
+                $artirst_string = $row[4];
                 $artist_array = preg_split("/,|&/m", $artirst_string);
                 $total_artist_array = array_merge($total_artist_array, $artist_array);
             }
@@ -133,12 +133,12 @@ class Test extends Command
         $insert_data = [];
 
         foreach ($total_excel_data as $row) {
-            $isrc = $row[15];
+            $isrc = $row[6];
             if (!$isrc) {
                 continue;
             }
-            $number = $row[4];
-            $title = $row[7];
+            $number = $row[1];
+            $title = $row[3];
             $title = trim(preg_replace('/\[[^\]]*\]/m', '', $title));
 
             $artirst_string = $row[8];
@@ -195,7 +195,7 @@ class Test extends Command
         $insert_data = [];
 
         foreach ($total_excel_data as $row) {
-            $isrc = $row[15];
+            $isrc = $row[6];
             if (!$isrc) {
                 continue;
             }
